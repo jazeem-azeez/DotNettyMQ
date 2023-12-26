@@ -5,6 +5,8 @@ VisualStudioVersion = 17.9.34310.174
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MqBroker", "MqBroker\MqBroker.csproj", "{EED97172-8EC8-42EF-B096-67D05D14D7DC}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MqClient", "MqClient\MqClient.csproj", "{249F2C8A-D89B-45BB-829B-B62BAA8CCABF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{EED97172-8EC8-42EF-B096-67D05D14D7DC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EED97172-8EC8-42EF-B096-67D05D14D7DC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EED97172-8EC8-42EF-B096-67D05D14D7DC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{249F2C8A-D89B-45BB-829B-B62BAA8CCABF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{249F2C8A-D89B-45BB-829B-B62BAA8CCABF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{249F2C8A-D89B-45BB-829B-B62BAA8CCABF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{249F2C8A-D89B-45BB-829B-B62BAA8CCABF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
