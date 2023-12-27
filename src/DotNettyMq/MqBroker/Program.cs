@@ -24,9 +24,10 @@ namespace MqBroker
                     .ChildHandler(new ActionChannelInitializer<IChannel>(channel =>
                     {
                         var pipeline = channel.Pipeline;
-                        pipeline.AddLast(new DelimiterBasedFrameDecoder(8192, Delimiters.LineDelimiter()));
-                        // pipeline.AddLast(new JZlibEncoder());
-                        // pipeline.AddLast(new JZlibDecoder());
+                        // pipeline.AddLast(new StringEncoder());
+                        // pipeline.AddLast(new StringDecoder());
+                        pipeline.AddLast(new DelimiterBasedFrameDecoder(16384, Delimiters.LineDelimiter()));
+                        pipeline.AddLast(new JsonObjectDecoder());
                         pipeline.AddLast(new EchoServerHandler());
                     }));
 
@@ -44,9 +45,5 @@ namespace MqBroker
             }
         }
     }
-
-    internal class DotNettyMessage
-    
-    {
-    }
+ 
 }
