@@ -1,4 +1,7 @@
 ﻿using System.Net;
+using DotNetty.Codecs;
+using DotNetty.Codecs.Compression;
+using DotNetty.Codecs.Json;
 using DotNetty.Transport.Bootstrapping;
 using DotNetty.Transport.Channels;
 using DotNetty.Transport.Channels.Sockets;
@@ -21,6 +24,9 @@ namespace MqBroker
                     .ChildHandler(new ActionChannelInitializer<IChannel>(channel =>
                     {
                         var pipeline = channel.Pipeline;
+                        pipeline.AddLast(new DelimiterBasedFrameDecoder(8192, Delimiters.LineDelimiter()));
+                        // pipeline.AddLast(new JZlibEncoder());
+                        // pipeline.AddLast(new JZlibDecoder());
                         pipeline.AddLast(new EchoServerHandler());
                     }));
 
@@ -37,5 +43,10 @@ namespace MqBroker
                 workerGroup.ShutdownGracefullyAsync().Wait();
             }
         }
+    }
+
+    internal class DotNettyMessage
+    
+    {
     }
 }
