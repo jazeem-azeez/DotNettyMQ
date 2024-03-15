@@ -35,6 +35,7 @@ namespace MqBroker
                 // Console.WriteLine($"Received from client: {str}");
                 // context.Flush();
                 JsonSerializer.Deserialize<DotNettyMessage>(str);
+                // Task.Delay(10).GetAwaiter().GetResult();
                 counter++;
             }
         }
@@ -42,8 +43,11 @@ namespace MqBroker
 
         public override void ChannelReadComplete(IChannelHandlerContext context)
         {
-            Console.WriteLine(counter);
-            context.Flush();
+            if (counter == 1000000)
+            {
+                Console.WriteLine(counter);
+                context.Flush();
+            }
         }
 
         public override void ExceptionCaught(IChannelHandlerContext context, Exception exception)

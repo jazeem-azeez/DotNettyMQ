@@ -35,7 +35,7 @@ namespace MqClient
                         pipeline.AddLast(new EchoClientHandler());
                     }));
 
-                var endPoint = new IPEndPoint(IPAddress.Parse("127.0.0.1"), 8888);
+                var endPoint = new IPEndPoint(IPAddress.Parse("127.0.0.1"), 39500);
                 var channel = await bootstrap.ConnectAsync(endPoint);
                 Console.WriteLine("Press Enter");
                 Console.ReadLine();
@@ -46,12 +46,12 @@ namespace MqClient
                     CanWrite = false,
                     Length = 100,
                     Position = 0,
-                    Message = " \n ".PadLeft(10, '*').PadRight(10, '#')
+                    Message = " \r\n ".PadLeft(10, '*').PadRight(10, '#')
                 });
                 // Send a message to the server
                 var stopWatch = Stopwatch.StartNew();
                 // var wrappedBuffer = Unpooled.WrappedBuffer(Encoding.UTF8.GetBytes(serialize));
-                var tasks = new List<Task>();
+                var tasks = new List<Task>(10000);
                 for (int i = 0; i < 10000; i++)
                 {
                     tasks.Add(channel.WriteAndFlushAsync(

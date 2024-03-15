@@ -20,7 +20,7 @@ namespace MqBroker
                 var bootstrap = new ServerBootstrap()
                     .Group(bossGroup, workerGroup)
                     .Channel<TcpServerSocketChannel>()
-                    .Option(ChannelOption.SoBacklog, 100)
+                    .Option(ChannelOption.SoBacklog, 1000)
                     .ChildHandler(new ActionChannelInitializer<IChannel>(channel =>
                     {
                         var pipeline = channel.Pipeline;
@@ -31,7 +31,7 @@ namespace MqBroker
                         pipeline.AddLast(new EchoServerHandler());
                     }));
 
-                var serverChannel = bootstrap.BindAsync(new IPEndPoint(IPAddress.Any, 8888)).Result;
+                var serverChannel = bootstrap.BindAsync(new IPEndPoint(IPAddress.Any, 39500)).Result;
                 Console.WriteLine("Server started on port 8888. Press Enter to exit.");
                 Console.ReadLine();
 
